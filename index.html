@@ -15,7 +15,7 @@
     --paper: #F6EEDD;
     --plum: #4E1527;
     --plum-glow: #3A0F1F;
-    --near-black: #4E1527;
+    --near-black: #170A0D;
     --wine: #4E1527;
     --wine-deep: #4E1527;
     --seed: #4E1527;
@@ -175,8 +175,10 @@
     color:var(--enamel);
   }
   .hero h1 mark{
-    background:none;
-    color:inherit;
+    background:linear-gradient(90deg, var(--enamel), var(--rose) 60%, var(--enamel));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
     padding:0;
     font-style:normal;
   }
@@ -194,7 +196,7 @@
     flex-wrap:wrap;
   }
   .btn-primary{
-    background:var(--wine);
+    background:linear-gradient(135deg, var(--wine), var(--plum-glow));
     color:var(--enamel);
     padding:13px 26px;
     border-radius:100px;
@@ -204,7 +206,7 @@
     display:inline-block;
     transition:all 0.2s;
   }
-  .btn-primary:hover{ background:var(--wine-deep); transform:translateY(-1px); }
+  .btn-primary:hover{ background:linear-gradient(135deg, var(--plum-glow), var(--near-black)); transform:translateY(-1px); }
   .btn-ghost{
     padding:13px 22px;
     border-radius:100px;
@@ -226,6 +228,15 @@
     font-size:12.5px;
     color:var(--enamel);
     opacity:0.55;
+  }
+  .pom-art-hero{
+    position:absolute;
+    left:-50px;
+    bottom:-40px;
+    width:220px;
+    opacity:0.16;
+    z-index:1;
+    pointer-events:none;
   }
 
   /* section shell */
@@ -301,13 +312,25 @@
 
   /* meeting card */
   #meeting{
+    position:relative;
+    overflow:hidden;
     background:
       radial-gradient(70% 120% at 85% -10%, rgba(78,21,39,0.06), transparent 55%),
       radial-gradient(70% 120% at 10% 110%, rgba(58,15,31,0.05), transparent 55%),
       var(--enamel);
   }
+  #meeting .wrap{ position:relative; z-index:1; }
+  .pom-art-meeting{
+    position:absolute;
+    top:-50px;
+    right:-40px;
+    width:240px;
+    opacity:0.14;
+    z-index:0;
+    pointer-events:none;
+  }
   .meeting-card{
-    background:var(--wine-deep);
+    background:linear-gradient(150deg, var(--wine-deep), var(--plum-glow));
     color:var(--enamel);
     border-radius:20px;
     padding:44px;
@@ -350,7 +373,7 @@
     max-width:420px;
   }
   .meeting-cta{
-    background:var(--cream);
+    background:linear-gradient(135deg, var(--cream), var(--rose));
     color:var(--plum);
     padding:14px 28px;
     border-radius:100px;
@@ -399,7 +422,7 @@
     border-radius:10px;
     transition:background 0.25s;
   }
-  .book-row:hover{ background:rgba(194,131,110,0.14); }
+  .book-row:hover{ background:linear-gradient(90deg, rgba(194,131,110,0.18), rgba(194,131,110,0.03)); }
   .book-title{
     font-family:'Fraunces', serif;
     font-size:20px;
@@ -425,7 +448,7 @@
     font-size:12px;
     padding:6px 14px;
     border-radius:100px;
-    background:var(--near-black);
+    background:linear-gradient(135deg, var(--near-black), var(--plum-glow));
     color:var(--enamel);
     font-weight:600;
     white-space:nowrap;
@@ -444,6 +467,15 @@
     overflow:hidden;
   }
   footer .wrap{ position:relative; z-index:1; }
+  .pom-art-footer{
+    position:absolute;
+    bottom:-30px;
+    right:16px;
+    width:160px;
+    opacity:0.7;
+    z-index:0;
+    pointer-events:none;
+  }
   .footer-grid{
     display:flex;
     justify-content:space-between;
@@ -501,7 +533,7 @@
     .book-row{ grid-template-columns:1fr; row-gap:6px; }
     .book-tag{ display:none; }
     .footer-grid{ flex-direction:column; }
-    .pom-art-about, .pom-art-books{ display:none; }
+    .pom-art-about, .pom-art-books, .pom-art-hero, .pom-art-meeting, .pom-art-footer{ display:none; }
   }
 </style>
 </head>
@@ -535,6 +567,7 @@
     </div>
   </div>
   <span class="hero-credit">"A Rose" — Thomas Anshutz</span>
+  <img class="pom-art-hero" src="pom-art.png" alt="" aria-hidden="true">
 </div>
 
 <section class="about" id="about">
@@ -551,6 +584,7 @@
 </section>
 
 <section id="meeting">
+  <img class="pom-art-meeting" src="pom-art.png" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="section-head">
       <div class="seeds"><span></span><span></span><span></span><span></span><span></span></div>
@@ -644,6 +678,7 @@
 </section>
 
 <footer>
+  <img class="pom-art-footer" src="pom-art.png" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="footer-grid">
       <div>
