@@ -19,6 +19,8 @@
     --olive: #6C7A4C;
     --olive-deep: #4E5A36;
     --rose: #C98A94;
+    --blush: #F7DCE1;
+    --blush-2: #F1C7CF;
     --line: rgba(52,26,37,0.14);
   }
   *{box-sizing:border-box;}
@@ -76,7 +78,7 @@
     display:flex; align-items:center; gap:12px;
     text-decoration:none;
   }
-  .brand img{ width:40px; height:40px; border-radius:50%; }
+  .brand img{ width:40px; height:40px; border-radius:10px; }
   .brand span{
     font-family:'Fraunces', serif;
     font-size:19px;
@@ -109,6 +111,7 @@
   /* hero */
   .hero{
     padding:88px 0 64px;
+    background: radial-gradient(60% 55% at 78% 30%, var(--blush) 0%, rgba(247,220,225,0) 70%);
   }
   .hero-grid{
     display:grid;
@@ -117,22 +120,27 @@
     align-items:center;
   }
   .eyebrow{
-    font-size:13px;
-    letter-spacing:0.08em;
+    font-size:12px;
+    letter-spacing:0.06em;
     text-transform:uppercase;
-    color:var(--wine);
+    color:var(--wine-deep);
     font-weight:600;
     margin-bottom:18px;
-    display:block;
+    display:inline-block;
+    background:var(--blush);
+    padding:6px 14px;
+    border-radius:100px;
   }
   .hero h1{
     font-size:56px;
     line-height:1.05;
   }
-  .hero h1 em{
-    font-style:italic;
-    color:var(--wine);
-    font-weight:500;
+  .hero h1 mark{
+    background:var(--blush-2);
+    color:var(--wine-deep);
+    padding:2px 10px;
+    border-radius:8px;
+    font-style:normal;
   }
   .hero p.lede{
     margin-top:22px;
@@ -175,8 +183,8 @@
   }
   .hero-art img{
     width:100%;
-    max-width:340px;
-    border-radius:50%;
+    max-width:320px;
+    border-radius:26px;
     box-shadow: 0 20px 60px -20px rgba(87,23,45,0.35);
   }
 
@@ -198,7 +206,7 @@
 
   /* about */
   .about{
-    background:var(--paper);
+    background:linear-gradient(180deg, var(--blush) 0%, var(--paper) 55%);
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
   }
@@ -316,9 +324,9 @@
     font-size:12px;
     padding:6px 14px;
     border-radius:100px;
-    background:var(--cream-2);
+    background:var(--blush);
     color:var(--wine-deep);
-    font-weight:500;
+    font-weight:600;
     white-space:nowrap;
   }
 
@@ -398,12 +406,12 @@
 <div id="top" class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">A book club, read for the love of it</span>
-      <h1>Books worth <em>savoring</em><br>together.</h1>
-      <p class="lede">Pomegranate Book Club is a small, warm circle of readers who meet once a month to talk about a book we've all actually finished (mostly). No syllabus, no pressure — just good books and better conversation. NYC x Singapore based.</p>
+      <span class="eyebrow">a book club</span>
+      <h1>Bringing back<br><mark>reading</mark>.</h1>
+      <p class="lede">two friends craving long form content. its more fun to read when you can talk about it with your friends! join us for our next meeting!</p>
       <div class="hero-cta">
-        <a class="btn-primary" href="#meeting">See next meeting</a>
-        <a class="btn-ghost" href="#books">This season's books</a>
+        <a class="btn-primary" href="#meeting">next meeting</a>
+        <a class="btn-ghost" href="#books">the books</a>
       </div>
     </div>
     <div class="hero-art">
@@ -415,12 +423,12 @@
 <section class="about" id="about">
   <div class="wrap about-grid">
     <div>
-      <span class="eyebrow">What we're about</span>
-      <h2 style="font-size:30px; margin-bottom:18px;">A little tart, a little sweet — like the fruit.</h2>
-      <p>Pomegranate is still very much in its early, chill era — a space for book-obsessed girls to sit with a story and actually go deep on it, instead of skimming the summary and calling it read. We're here to appreciate literature properly, do our small part against the anti-literacy crisis, and give the book worms a place to be the loudest people in the room.</p>
-      <p class="founders">Co-founded by <a href="https://www.instagram.com/diya.gandhi/" target="_blank" rel="noopener">Diya Gandhi</a> &amp; <a href="https://www.instagram.com/shayonab21/" target="_blank" rel="noopener">Shayona Basu</a>.</p>
+      <span class="eyebrow">the vibe</span>
+      <h2 style="font-size:30px; margin-bottom:18px;">what we're reading</h2>
+      <p>as we approach our mid 20's we can either go to japan or start a book club. we dont like long haul flights :)</p>
+      <p class="founders">created by <a href="https://www.instagram.com/diya.gandhi/" target="_blank" rel="noopener">Diya Gandhi</a> and <a href="https://www.instagram.com/shayonab21/" target="_blank" rel="noopener">Shayona Basu</a></p>
     </div>
-    <p class="quote">"She is too fond of books, and it has turned her brain."<br><span style="font-family:'Inter',sans-serif; font-style:normal; font-size:13px; opacity:0.6; display:block; margin-top:10px;">— Louisa May Alcott</span></p>
+    <p class="quote">In 2022, 38% of all adults reported reading a book of any kind all year.<br><span style="font-family:'Inter',sans-serif; font-style:normal; font-size:13px; opacity:0.6; display:block; margin-top:10px;">— <a href="https://www.theatlantic.com/magazine/2026/08/reading-crisis-postliterate-age/687618/" target="_blank" rel="noopener" style="color:inherit;">The Atlantic</a></span></p>
   </div>
 </section>
 
@@ -429,13 +437,13 @@
     <div class="section-head">
       <div class="seeds"><span></span><span></span><span></span><span></span><span></span></div>
       <h2>Next meeting</h2>
-      <p>We meet monthly over video call — easy to join from anywhere.</p>
+      <p>register your interest by dming us on instagram!</p>
     </div>
     <div class="meeting-card reveal">
       <div>
-        <span class="eyebrow" style="color:var(--rose);">Up next</span>
-        <h3 id="next-meeting-date">Wednesday, August 26</h3>
-        <p>Evening, NYC time — exact time and the video call link go out on our Instagram closer to the date, so follow along so you don't miss it.</p>
+        <span class="eyebrow">up next</span>
+        <h3 id="next-meeting-date">Sun, Aug 30 · 9pm EST</h3>
+        <p>meeting link provided closer to date</p>
         <div class="meeting-meta">
           <div>
             <span class="label">Format</span>
@@ -460,17 +468,17 @@
   <div class="wrap">
     <div class="section-head">
       <div class="seeds"><span></span><span></span><span></span><span></span><span></span></div>
-      <h2>Upcoming books!</h2>
-      <p>You can join any book club meeting you like.</p>
+      <h2>Upcoming books</h2>
+      <p>come to whichever ones you can make.</p>
     </div>
     <div class="book-list reveal">
       <div class="book-row">
         <span class="book-num">01</span>
         <div>
-          <div class="book-title">Jane Eyre</div>
-          <div class="book-author">Charlotte Brontë</div>
+          <div class="book-title">East of Eden</div>
+          <div class="book-author">John Steinbeck</div>
         </div>
-        <span class="book-tag">Classic</span>
+        <span class="book-tag">Aug – Sept</span>
       </div>
       <div class="book-row">
         <span class="book-num">02</span>
@@ -478,7 +486,7 @@
           <div class="book-title">Don Quixote</div>
           <div class="book-author">Miguel de Cervantes</div>
         </div>
-        <span class="book-tag">Classic</span>
+        <span class="book-tag">October</span>
       </div>
       <div class="book-row">
         <span class="book-num">03</span>
@@ -486,7 +494,7 @@
           <div class="book-title">Parable of the Sower</div>
           <div class="book-author">Octavia E. Butler</div>
         </div>
-        <span class="book-tag">Sci-fi</span>
+        <span class="book-tag">November</span>
       </div>
       <div class="book-row">
         <span class="book-num">04</span>
@@ -494,7 +502,7 @@
           <div class="book-title">Daisy Jones &amp; The Six</div>
           <div class="book-author">Taylor Jenkins Reid</div>
         </div>
-        <span class="book-tag">Fiction</span>
+        <span class="book-tag">December</span>
       </div>
       <div class="book-row">
         <span class="book-num">05</span>
@@ -502,7 +510,7 @@
           <div class="book-title">Song of Solomon</div>
           <div class="book-author">Toni Morrison</div>
         </div>
-        <span class="book-tag">Classic</span>
+        <span class="book-tag">January</span>
       </div>
       <div class="book-row">
         <span class="book-num">06</span>
@@ -510,7 +518,7 @@
           <div class="book-title">The Second Sex</div>
           <div class="book-author">Simone de Beauvoir</div>
         </div>
-        <span class="book-tag">Nonfiction</span>
+        <span class="book-tag">February</span>
       </div>
     </div>
   </div>
@@ -524,7 +532,7 @@
           <img src="logo.png" alt="Pomegranate Book Club logo">
           <span>Pomegranate</span>
         </a>
-        <p>A monthly book club for people who like to underline sentences and then argue about them.</p>
+        <p>two girls fighting the illiteracy crisis</p>
       </div>
       <div class="footer-links">
         <a href="#about">About</a>
@@ -533,7 +541,7 @@
         <a href="https://www.instagram.com/pomegranatebookclub/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
-    <div class="foot-bottom">Pomegranate Book Club · NYC x Singapore · co-founded by Diya Gandhi &amp; Shayona Basu</div>
+    <div class="foot-bottom">Pomegranate Book Club · global brand · created by Diya Gandhi &amp; Shayona Basu</div>
   </div>
 </footer>
 
