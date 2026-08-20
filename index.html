@@ -17,10 +17,10 @@
     --wine-deep: #57172D;
     --seed: #9C2038;
     --olive: #6C7A4C;
-    --olive-deep: #4E5A36;
     --rose: #C98A94;
     --blush: #F7DCE1;
     --blush-2: #F1C7CF;
+    --gold: #AD8749;
     --line: rgba(52,26,37,0.14);
   }
   *{box-sizing:border-box;}
@@ -61,14 +61,35 @@
     opacity:0.85;
   }
   .seeds span:nth-child(2n){ background:var(--wine); transform:translateY(2px) scale(0.85); opacity:0.6;}
-  .seeds span:nth-child(3n){ background:var(--olive); transform:translateY(-1px) scale(0.7); opacity:0.5;}
+  .seeds span:nth-child(3n){ background:var(--gold); transform:translateY(-1px) scale(0.7); opacity:0.65;}
+
+  /* eyebrow label */
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:11.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--wine-deep);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:24px;
+    height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .eyebrow--light{ color:var(--blush-2); }
+  .eyebrow--light::before{ background:var(--gold); }
 
   /* header */
   header{
     position:sticky; top:0; z-index:50;
-    background:rgba(248,242,228,0.92);
-    backdrop-filter: blur(6px);
-    border-bottom:1px solid var(--line);
+    background:linear-gradient(115deg, var(--wine-deep), var(--wine) 75%);
+    border-bottom:1px solid rgba(248,242,228,0.14);
   }
   .nav{
     display:flex; align-items:center; justify-content:space-between;
@@ -78,68 +99,71 @@
     display:flex; align-items:center; gap:12px;
     text-decoration:none;
   }
-  .brand img{ width:40px; height:40px; border-radius:10px; }
+  .brand img{
+    width:38px; height:38px; border-radius:9px;
+    box-shadow:0 0 0 1px rgba(248,242,228,0.3);
+  }
   .brand span{
     font-family:'Fraunces', serif;
     font-size:19px;
     font-weight:500;
-    color:var(--plum);
+    color:var(--cream);
+    letter-spacing:0.01em;
   }
-  nav.links{ display:flex; gap:28px; }
+  nav.links{ display:flex; gap:30px; }
   nav.links a{
     text-decoration:none;
-    color:var(--plum);
-    font-size:14px;
+    color:var(--cream);
+    font-size:13.5px;
     font-weight:500;
-    opacity:0.75;
+    letter-spacing:0.02em;
+    opacity:0.78;
     transition:opacity 0.2s;
   }
-  nav.links a:hover{ opacity:1; color:var(--wine); }
+  nav.links a:hover{ opacity:1; }
   .ig-btn{
-    border:1px solid var(--plum);
+    border:1px solid rgba(248,242,228,0.55);
     padding:8px 16px;
     border-radius:100px;
     font-size:13px;
     font-weight:500;
     text-decoration:none;
-    color:var(--plum);
+    color:var(--cream);
     white-space:nowrap;
     transition:all 0.2s;
   }
-  .ig-btn:hover{ background:var(--plum); color:var(--cream); }
+  .ig-btn:hover{ background:var(--cream); color:var(--wine-deep); border-color:var(--cream); }
 
   /* hero */
   .hero{
-    padding:88px 0 64px;
-    background: radial-gradient(60% 55% at 78% 30%, var(--blush) 0%, rgba(247,220,225,0) 70%);
+    padding:96px 0 72px;
+    position:relative;
+    overflow:hidden;
   }
   .hero-grid{
     display:grid;
     grid-template-columns:1.15fr 0.85fr;
     gap:56px;
     align-items:center;
+    position:relative;
+    z-index:1;
   }
-  .eyebrow{
-    font-size:12px;
-    letter-spacing:0.06em;
-    text-transform:uppercase;
-    color:var(--wine-deep);
-    font-weight:600;
-    margin-bottom:18px;
-    display:inline-block;
-    background:var(--blush);
-    padding:6px 14px;
-    border-radius:100px;
+  .pom-art-hero{
+    position:absolute;
+    top:-30px;
+    right:-30px;
+    width:250px;
+    z-index:0;
+    pointer-events:none;
   }
   .hero h1{
-    font-size:56px;
+    font-size:58px;
     line-height:1.05;
   }
   .hero h1 mark{
-    background:var(--blush-2);
-    color:var(--wine-deep);
-    padding:2px 10px;
-    border-radius:8px;
+    background:none;
+    color:inherit;
+    padding:0;
     font-style:normal;
   }
   .hero p.lede{
@@ -164,9 +188,9 @@
     font-size:14px;
     font-weight:600;
     display:inline-block;
-    transition:background 0.2s;
+    transition:all 0.2s;
   }
-  .btn-primary:hover{ background:var(--wine-deep); }
+  .btn-primary:hover{ background:var(--wine-deep); transform:translateY(-1px); }
   .btn-ghost{
     padding:13px 22px;
     border-radius:100px;
@@ -175,7 +199,9 @@
     font-weight:600;
     color:var(--plum);
     border:1px solid var(--line);
+    transition:all 0.2s;
   }
+  .btn-ghost:hover{ border-color:var(--wine-deep); color:var(--wine-deep); }
   .hero-art{
     position:relative;
     display:flex;
@@ -184,12 +210,13 @@
   .hero-art img{
     width:100%;
     max-width:320px;
-    border-radius:26px;
-    box-shadow: 0 20px 60px -20px rgba(87,23,45,0.35);
+    border-radius:0;
+    box-shadow:none;
+    background:var(--cream);
   }
 
   /* section shell */
-  section{ padding:76px 0; }
+  section{ padding:80px 0; }
   .section-head{
     text-align:center;
     max-width:600px;
@@ -206,9 +233,22 @@
 
   /* about */
   .about{
-    background:linear-gradient(180deg, var(--blush) 0%, var(--paper) 55%);
+    background:var(--wine-deep);
     border-top:1px solid var(--line);
     border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  .about .wrap{ position:relative; z-index:1; }
+  .pom-art-about{
+    position:absolute;
+    top:50%;
+    right:-60px;
+    transform:translateY(-50%);
+    width:300px;
+    opacity:0.16;
+    z-index:0;
+    pointer-events:none;
   }
   .about-grid{
     display:grid;
@@ -217,17 +257,24 @@
   }
   .about-grid p{
     font-size:16px;
+    color:var(--cream);
     opacity:0.85;
   }
+  .about h2{ color:var(--cream); }
+  .about .founders{ color:var(--cream); opacity:0.65; }
+  .about .founders a{ color:var(--blush-2); }
   .about-grid .quote{
     font-family:'Fraunces', serif;
     font-style:italic;
-    font-size:24px;
-    line-height:1.4;
-    color:var(--wine-deep);
-    border-left:2px solid var(--seed);
-    padding-left:22px;
+    font-size:30px;
+    line-height:1.35;
+    color:var(--cream);
+    font-weight:500;
+    border-left:3px solid var(--gold);
+    padding-left:26px;
   }
+  .about-grid .quote span{ opacity:0.55; }
+  .about-grid .quote a{ color:var(--blush-2); }
   .founders{
     margin-top:26px;
     font-size:14px;
@@ -286,7 +333,10 @@
     font-weight:600;
     font-size:14px;
     white-space:nowrap;
+    transition:transform 0.2s;
+    display:inline-block;
   }
+  .meeting-cta:hover{ transform:translateY(-1px); }
 
   /* books */
   .books{ background:var(--cream); }
@@ -300,14 +350,18 @@
     grid-template-columns:56px 1fr auto;
     align-items:center;
     gap:22px;
-    padding:22px 0;
+    padding:22px 14px;
+    margin:0 -14px;
     border-bottom:1px solid var(--line);
+    border-radius:10px;
+    transition:background 0.25s;
   }
+  .book-row:hover{ background:rgba(173,135,73,0.08); }
   .book-num{
     font-family:'Fraunces', serif;
     font-style:italic;
     font-size:22px;
-    color:var(--rose);
+    color:var(--gold);
     text-align:left;
   }
   .book-title{
@@ -335,6 +389,18 @@
     background:var(--plum);
     color:var(--cream);
     padding:56px 0 36px;
+    position:relative;
+    overflow:hidden;
+  }
+  footer .wrap{ position:relative; z-index:1; }
+  .pom-art-footer{
+    position:absolute;
+    bottom:-24px;
+    right:14px;
+    width:150px;
+    opacity:0.85;
+    z-index:0;
+    pointer-events:none;
   }
   .footer-grid{
     display:flex;
@@ -344,6 +410,7 @@
     gap:32px;
   }
   footer .brand span{ color:var(--cream); }
+  footer .brand img{ box-shadow:0 0 0 1px rgba(248,242,228,0.2); }
   footer p{ opacity:0.6; font-size:14px; max-width:320px; margin-top:10px;}
   .footer-links{ display:flex; gap:26px; }
   .footer-links a{
@@ -383,6 +450,7 @@
     .book-row{ grid-template-columns:36px 1fr; }
     .book-tag{ display:none; }
     .footer-grid{ flex-direction:column; }
+    .pom-art-hero, .pom-art-about, .pom-art-footer{ display:none; }
   }
 </style>
 </head>
@@ -404,6 +472,7 @@
 </header>
 
 <div id="top" class="hero">
+  <img class="pom-art-hero" src="pom-art.png" alt="" aria-hidden="true">
   <div class="wrap hero-grid">
     <div>
       <span class="eyebrow">a book club</span>
@@ -421,14 +490,15 @@
 </div>
 
 <section class="about" id="about">
+  <img class="pom-art-about" src="pom-art.png" alt="" aria-hidden="true">
   <div class="wrap about-grid">
     <div>
-      <span class="eyebrow">the vibe</span>
+      <span class="eyebrow eyebrow--light">the vibe</span>
       <h2 style="font-size:30px; margin-bottom:18px;">what we're reading</h2>
-      <p>as we approach our mid 20's we can either go to japan or start a book club. we dont like long haul flights :)</p>
+      <p>as we approach our mid 20's we can either go to japan or start a book club. and we don't like long haul flights :)</p>
       <p class="founders">created by <a href="https://www.instagram.com/diya.gandhi/" target="_blank" rel="noopener">Diya Gandhi</a> and <a href="https://www.instagram.com/shayonab21/" target="_blank" rel="noopener">Shayona Basu</a></p>
     </div>
-    <p class="quote">In 2022, 38% of all adults reported reading a book of any kind all year.<br><span style="font-family:'Inter',sans-serif; font-style:normal; font-size:13px; opacity:0.6; display:block; margin-top:10px;">— <a href="https://www.theatlantic.com/magazine/2026/08/reading-crisis-postliterate-age/687618/" target="_blank" rel="noopener" style="color:inherit;">The Atlantic</a></span></p>
+    <p class="quote">In 2022, 38% of all adults reported reading a book of any kind all year.<br><span style="font-family:'Inter',sans-serif; font-style:normal; font-size:13px; display:block; margin-top:12px;">— <a href="https://www.theatlantic.com/magazine/2026/08/reading-crisis-postliterate-age/687618/" target="_blank" rel="noopener">The Atlantic</a> (sorry for paywall :()</span></p>
   </div>
 </section>
 
@@ -441,7 +511,7 @@
     </div>
     <div class="meeting-card reveal">
       <div>
-        <span class="eyebrow">up next</span>
+        <span class="eyebrow eyebrow--light">up next</span>
         <h3 id="next-meeting-date">Sun, Aug 30 · 9pm EST</h3>
         <p>meeting link provided closer to date</p>
         <div class="meeting-meta">
@@ -525,6 +595,7 @@
 </section>
 
 <footer>
+  <img class="pom-art-footer" src="pom-art.png" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="footer-grid">
       <div>
@@ -541,7 +612,7 @@
         <a href="https://www.instagram.com/pomegranatebookclub/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
-    <div class="foot-bottom">Pomegranate Book Club · global brand · created by Diya Gandhi &amp; Shayona Basu</div>
+    <div class="foot-bottom">Pomegranate Book Club · A Global Brand · created by Diya Gandhi &amp; Shayona Basu</div>
   </div>
 </footer>
 
