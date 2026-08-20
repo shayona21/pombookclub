@@ -4,24 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pomegranate Book Club</title>
+<link rel="icon" type="image/png" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --cream: #F8F2E4;
-    --cream-2: #F1E9D8;
-    --paper: #FCF8EF;
-    --plum: #341A25;
+    --cream: #faede1;
+    --cream-2: #E9DCC1;
+    --paper: #F6EEDD;
+    --plum: #2C1420;
+    --near-black: #4f0f33;
     --wine: #7C2440;
-    --wine-deep: #57172D;
+    --wine-deep: #4E1527;
     --seed: #9C2038;
     --olive: #6C7A4C;
     --rose: #C98A94;
     --blush: #F7DCE1;
     --blush-2: #F1C7CF;
-    --gold: #AD8749;
-    --line: rgba(52,26,37,0.14);
+    --accent: #81996b;
+    --enamel: #ede3c0;
+    --line: rgba(52,26,37,0.16);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -61,7 +64,7 @@
     opacity:0.85;
   }
   .seeds span:nth-child(2n){ background:var(--wine); transform:translateY(2px) scale(0.85); opacity:0.6;}
-  .seeds span:nth-child(3n){ background:var(--gold); transform:translateY(-1px) scale(0.7); opacity:0.65;}
+  .seeds span:nth-child(3n){ background:var(--accent); transform:translateY(-1px) scale(0.7); opacity:0.65;}
 
   /* eyebrow label */
   .eyebrow{
@@ -79,11 +82,11 @@
     content:'';
     width:24px;
     height:1px;
-    background:var(--gold);
+    background:var(--accent);
     display:inline-block;
   }
-  .eyebrow--light{ color:var(--blush-2); }
-  .eyebrow--light::before{ background:var(--gold); }
+  .eyebrow--light{ color:var(--enamel); opacity:0.85; }
+  .eyebrow--light::before{ background:var(--accent); }
 
   /* header */
   header{
@@ -136,29 +139,36 @@
 
   /* hero */
   .hero{
-    padding:96px 0 72px;
     position:relative;
+    height:clamp(640px, 100vh, 1040px);
+    display:flex;
+    align-items:center;
     overflow:hidden;
+    background-color:#100F12;
+    background-image:url('hero-bg.jpg');
+    background-repeat:no-repeat;
+    background-position:right center;
+    background-size:auto 100%;
+  }
+  .hero::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(90deg, rgba(16,15,18,0.72) 0%, rgba(16,15,18,0.42) 32%, rgba(16,15,18,0.06) 56%, rgba(16,15,18,0) 68%);
+    pointer-events:none;
   }
   .hero-grid{
-    display:grid;
-    grid-template-columns:1.15fr 0.85fr;
-    gap:56px;
-    align-items:center;
     position:relative;
     z-index:1;
+    width:100%;
   }
-  .pom-art-hero{
-    position:absolute;
-    top:-30px;
-    right:-30px;
-    width:250px;
-    z-index:0;
-    pointer-events:none;
+  .hero-content{
+    max-width:480px;
   }
   .hero h1{
     font-size:58px;
     line-height:1.05;
+    color:var(--enamel);
   }
   .hero h1 mark{
     background:none;
@@ -169,9 +179,9 @@
   .hero p.lede{
     margin-top:22px;
     font-size:17px;
-    color:var(--plum);
+    color:var(--enamel);
     opacity:0.82;
-    max-width:460px;
+    max-width:440px;
   }
   .hero-cta{
     margin-top:32px;
@@ -181,7 +191,7 @@
   }
   .btn-primary{
     background:var(--wine);
-    color:var(--cream);
+    color:var(--enamel);
     padding:13px 26px;
     border-radius:100px;
     text-decoration:none;
@@ -197,22 +207,21 @@
     text-decoration:none;
     font-size:14px;
     font-weight:600;
-    color:var(--plum);
-    border:1px solid var(--line);
+    color:var(--enamel);
+    border:1px solid rgba(244,238,221,0.4);
     transition:all 0.2s;
   }
-  .btn-ghost:hover{ border-color:var(--wine-deep); color:var(--wine-deep); }
-  .hero-art{
-    position:relative;
-    display:flex;
-    justify-content:center;
-  }
-  .hero-art img{
-    width:100%;
-    max-width:320px;
-    border-radius:0;
-    box-shadow:none;
-    background:var(--cream);
+  .btn-ghost:hover{ border-color:var(--enamel); background:rgba(244,238,221,0.08); }
+  .hero-credit{
+    position:absolute;
+    right:28px;
+    bottom:20px;
+    z-index:1;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:12.5px;
+    color:var(--enamel);
+    opacity:0.55;
   }
 
   /* section shell */
@@ -223,11 +232,11 @@
     margin:0 auto 48px;
   }
   .section-head .seeds{ margin-bottom:18px; }
-  .section-head h2{ font-size:34px; }
+  .section-head h2{ font-size:34px; color:var(--enamel); }
   .section-head p{
     margin-top:14px;
-    color:var(--plum);
-    opacity:0.75;
+    color:var(--enamel);
+    opacity:0.7;
     font-size:15.5px;
   }
 
@@ -270,7 +279,7 @@
     line-height:1.35;
     color:var(--cream);
     font-weight:500;
-    border-left:3px solid var(--gold);
+    border-left:3px solid var(--accent);
     padding-left:26px;
   }
   .about-grid .quote span{ opacity:0.55; }
@@ -282,18 +291,20 @@
   }
 
   /* meeting card */
+  #meeting{ background:var(--enamel); }
   .meeting-card{
-    background:var(--plum);
-    color:var(--cream);
+    background:var(--wine-deep);
+    color:var(--enamel);
     border-radius:20px;
     padding:44px;
     display:grid;
     grid-template-columns:1fr auto;
     align-items:center;
     gap:32px;
+    border:1px solid rgba(244,238,221,0.08);
   }
   .meeting-card h3{
-    color:var(--cream);
+    color:var(--enamel);
     font-size:26px;
     margin-bottom:8px;
   }
@@ -339,11 +350,26 @@
   .meeting-cta:hover{ transform:translateY(-1px); }
 
   /* books */
-  .books{ background:var(--cream); }
+  .books{
+    background:var(--plum);
+    position:relative;
+    overflow:hidden;
+  }
+  .books .wrap{ position:relative; z-index:1; }
+  .pom-art-books{
+    position:absolute;
+    top:50%;
+    left:-70px;
+    transform:translateY(-50%);
+    width:300px;
+    opacity:0.16;
+    z-index:0;
+    pointer-events:none;
+  }
   .book-list{
     display:flex;
     flex-direction:column;
-    border-top:1px solid var(--line);
+    border-top:1px solid rgba(244,238,221,0.14);
   }
   .book-row{
     display:grid;
@@ -352,36 +378,39 @@
     gap:22px;
     padding:22px 14px;
     margin:0 -14px;
-    border-bottom:1px solid var(--line);
+    border-bottom:1px solid rgba(244,238,221,0.14);
     border-radius:10px;
     transition:background 0.25s;
   }
-  .book-row:hover{ background:rgba(173,135,73,0.08); }
+  .book-row:hover{ background:rgba(194,131,110,0.14); }
   .book-num{
     font-family:'Fraunces', serif;
     font-style:italic;
     font-size:22px;
-    color:var(--gold);
+    color:var(--accent);
     text-align:left;
   }
   .book-title{
     font-family:'Fraunces', serif;
     font-size:20px;
     font-weight:500;
+    color:var(--enamel);
   }
   .book-author{
     font-size:13.5px;
-    opacity:0.65;
+    color:var(--enamel);
+    opacity:0.6;
     margin-top:3px;
   }
   .book-tag{
     font-size:12px;
     padding:6px 14px;
     border-radius:100px;
-    background:var(--blush);
-    color:var(--wine-deep);
+    background:var(--near-black);
+    color:var(--enamel);
     font-weight:600;
     white-space:nowrap;
+    border:1px solid rgba(244,238,221,0.12);
   }
 
   /* footer */
@@ -393,15 +422,6 @@
     overflow:hidden;
   }
   footer .wrap{ position:relative; z-index:1; }
-  .pom-art-footer{
-    position:absolute;
-    bottom:-24px;
-    right:14px;
-    width:150px;
-    opacity:0.85;
-    z-index:0;
-    pointer-events:none;
-  }
   .footer-grid{
     display:flex;
     justify-content:space-between;
@@ -440,9 +460,18 @@
   }
 
   @media (max-width:760px){
-    .hero-grid{ grid-template-columns:1fr; }
-    .hero{ padding:52px 0 40px; }
+    .hero{
+      height:auto;
+      min-height:560px;
+      background-size:cover;
+      background-position:75% center;
+      padding:120px 0 60px;
+      display:block;
+    }
+    .hero::after{ background:linear-gradient(180deg, rgba(16,15,18,0.15) 0%, rgba(16,15,18,0.55) 55%, rgba(16,15,18,0.85) 100%); }
+    .hero-content{ max-width:100%; }
     .hero h1{ font-size:38px; }
+    .hero-credit{ display:none; }
     .about-grid{ grid-template-columns:1fr; gap:30px; }
     nav.links{ display:none; }
     .meeting-card{ grid-template-columns:1fr; text-align:left; padding:32px 26px;}
@@ -450,7 +479,7 @@
     .book-row{ grid-template-columns:36px 1fr; }
     .book-tag{ display:none; }
     .footer-grid{ flex-direction:column; }
-    .pom-art-hero, .pom-art-about, .pom-art-footer{ display:none; }
+    .pom-art-about, .pom-art-books{ display:none; }
   }
 </style>
 </head>
@@ -471,11 +500,10 @@
   </div>
 </header>
 
-<div id="top" class="hero">
-  <img class="pom-art-hero" src="pom-art.png" alt="" aria-hidden="true">
+<div id="top" class="hero" role="img" aria-label="Painting of a woman in a pink dress, seated, by Thomas Anshutz">
   <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">a book club</span>
+    <div class="hero-content">
+      <span class="eyebrow eyebrow--light">a book club</span>
       <h1>Bringing back<br><mark>reading</mark>.</h1>
       <p class="lede">two friends craving long form content. its more fun to read when you can talk about it with your friends! join us for our next meeting!</p>
       <div class="hero-cta">
@@ -483,10 +511,8 @@
         <a class="btn-ghost" href="#books">the books</a>
       </div>
     </div>
-    <div class="hero-art">
-      <img src="logo.png" alt="Illustration from the Pomegranate Book Club logo: a woman reading under a tree">
-    </div>
   </div>
+  <span class="hero-credit">"A Rose" — Thomas Anshutz</span>
 </div>
 
 <section class="about" id="about">
@@ -495,10 +521,10 @@
     <div>
       <span class="eyebrow eyebrow--light">the vibe</span>
       <h2 style="font-size:30px; margin-bottom:18px;">what we're reading</h2>
-      <p>as we approach our mid 20's we can either go to japan or start a book club. and we don't like long haul flights :)</p>
+      <p>as we approach our mid 20's we can either go to japan or start a book club. and we dont like long haul flights :)</p>
       <p class="founders">created by <a href="https://www.instagram.com/diya.gandhi/" target="_blank" rel="noopener">Diya Gandhi</a> and <a href="https://www.instagram.com/shayonab21/" target="_blank" rel="noopener">Shayona Basu</a></p>
     </div>
-    <p class="quote">In 2022, 38% of all adults reported reading a book of any kind all year.<br><span style="font-family:'Inter',sans-serif; font-style:normal; font-size:13px; display:block; margin-top:12px;">— <a href="https://www.theatlantic.com/magazine/2026/08/reading-crisis-postliterate-age/687618/" target="_blank" rel="noopener">The Atlantic</a> (sorry for paywall :()</span></p>
+    <p class="quote">In 2022, 38% of all adults reported reading a book of any kind all year.<br><span style="font-family:'Inter',sans-serif; font-style:normal; font-size:13px; display:block; margin-top:12px;">— <a href="https://www.theatlantic.com/magazine/2026/08/reading-crisis-postliterate-age/687618/" target="_blank" rel="noopener">The End of Reading Is Here by Rose Horowitch</a> (sorry for paywall :( )</span></p>
   </div>
 </section>
 
@@ -535,6 +561,7 @@
 </section>
 
 <section class="books" id="books">
+  <img class="pom-art-books" src="pom-art.png" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="section-head">
       <div class="seeds"><span></span><span></span><span></span><span></span><span></span></div>
@@ -595,7 +622,6 @@
 </section>
 
 <footer>
-  <img class="pom-art-footer" src="pom-art.png" alt="" aria-hidden="true">
   <div class="wrap">
     <div class="footer-grid">
       <div>
@@ -612,7 +638,7 @@
         <a href="https://www.instagram.com/pomegranatebookclub/" target="_blank" rel="noopener">Instagram</a>
       </div>
     </div>
-    <div class="foot-bottom">Pomegranate Book Club · A Global Brand · created by Diya Gandhi &amp; Shayona Basu</div>
+    <div class="foot-bottom">Pomegranate Book Club · global brand · created by Diya Gandhi &amp; Shayona Basu</div>
   </div>
 </footer>
 
