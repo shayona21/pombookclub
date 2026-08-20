@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Past Meetings — Pomegranate Book Club</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #faede1;
+    --cream-2: #faede1;
+    --paper: #F6EEDD;
+    --plum: #4E1527;
+    --plum-glow: #3A0F1F;
+    --near-black: #170A0D;
+    --wine: #4E1527;
+    --wine-deep: #4E1527;
+    --seed: #4E1527;
+    --olive: #6C7A4C;
+    --rose: #F1C7CF;
+    --blush: #F1C7CF;
+    --blush-2: #F1C7CF;
+    --accent: #faede1;
+    --enamel: #faede1;
+    --line: rgba(78,21,39,0.24);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--plum);
+    font-family:'Inter', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--plum);
+  }
+  a{color:var(--wine);}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1040px; margin:0 auto; padding:0 28px;}
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:11.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--wine-deep);
+    margin-bottom:18px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:24px;
+    height:1px;
+    background:var(--accent);
+    display:inline-block;
+  }
+  .eyebrow--light{ color:var(--enamel); opacity:0.85; }
+  .eyebrow--light::before{ background:var(--accent); }
+
+  /* header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:
+      radial-gradient(90% 160% at 10% -30%, rgba(78,21,39,0.55), transparent 55%),
+      radial-gradient(90% 160% at 95% 160%, rgba(58,15,31,0.6), transparent 55%),
+      var(--near-black);
+    border-bottom:1px solid rgba(248,242,228,0.14);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+    text-decoration:none;
+  }
+  .brand img{
+    width:38px; height:38px; border-radius:9px;
+    box-shadow:0 0 0 1px rgba(248,242,228,0.3);
+  }
+  .brand span{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    font-weight:500;
+    color:var(--cream);
+    letter-spacing:0.01em;
+  }
+  nav.links{ display:flex; gap:30px; }
+  nav.links a{
+    text-decoration:none;
+    color:var(--cream);
+    font-size:13.5px;
+    font-weight:500;
+    letter-spacing:0.02em;
+    opacity:0.78;
+    transition:opacity 0.2s;
+  }
+  nav.links a:hover{ opacity:1; }
+  nav.links a.current{ opacity:1; border-bottom:1px solid var(--rose); padding-bottom:4px; }
+  .ig-btn{
+    border:1px solid rgba(248,242,228,0.55);
+    padding:8px 16px;
+    border-radius:100px;
+    font-size:13px;
+    font-weight:500;
+    text-decoration:none;
+    color:var(--cream);
+    white-space:nowrap;
+    transition:all 0.2s;
+  }
+  .ig-btn:hover{ background:var(--cream); color:var(--wine-deep); border-color:var(--cream); }
+
+  /* page banner */
+  .page-banner{
+    position:relative;
+    overflow:hidden;
+    padding:76px 0 64px;
+    text-align:center;
+    background:
+      radial-gradient(80% 140% at 100% 25%, rgba(58,15,31,0.6), transparent 55%),
+      radial-gradient(60% 100% at -10% 95%, rgba(250,237,225,0.08), transparent 55%),
+      var(--wine-deep);
+  }
+  .page-banner .wrap{ position:relative; z-index:1; }
+  .pom-art-banner{
+    position:absolute;
+    top:50%;
+    right:-70px;
+    transform:translateY(-50%);
+    width:300px;
+    opacity:0.16;
+    z-index:0;
+    pointer-events:none;
+  }
+  .page-banner h1{ font-size:44px; color:var(--enamel); }
+  .page-banner p{ margin-top:14px; color:var(--enamel); opacity:0.72; font-size:15.5px; }
+
+  /* archive */
+  .archive{ padding:80px 0; background:var(--cream); }
+  .archive-list{ max-width:640px; margin:0 auto; display:flex; flex-direction:column; gap:22px; }
+  .list-label{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:var(--plum);
+    opacity:0.5;
+    margin:36px 0 4px;
+  }
+  .list-label:first-child{ margin-top:0; }
+
+  .meeting-entry{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:28px;
+    align-items:flex-start;
+    background:linear-gradient(150deg, var(--wine-deep), var(--plum-glow));
+    color:var(--enamel);
+    border-radius:16px;
+    padding:30px;
+    border:1px solid rgba(244,238,221,0.08);
+  }
+  .meeting-entry.upcoming{
+    opacity:0.55;
+    background:var(--plum);
+  }
+  .meeting-entry .cover{
+    width:100px;
+    height:148px;
+    border-radius:6px;
+    object-fit:cover;
+    border:1px solid rgba(244,238,221,0.15);
+  }
+  .cover-placeholder{
+    width:100px;
+    height:148px;
+    border-radius:6px;
+    background:linear-gradient(150deg, var(--plum-glow), var(--near-black));
+    border:1px solid rgba(244,238,221,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:13px;
+    color:var(--enamel);
+    opacity:0.5;
+    text-align:center;
+    padding:8px;
+  }
+  .meeting-entry h3{ color:var(--enamel); font-size:20px; margin-bottom:2px; }
+  .meeting-entry .author{ font-size:13.5px; opacity:0.6; margin-bottom:12px; }
+  .meeting-entry .meta{ font-size:12.5px; opacity:0.65; margin-bottom:16px; }
+  .meeting-entry .materials-link{
+    display:inline-block;
+    font-size:13px;
+    font-weight:600;
+    color:var(--enamel);
+    border:1px solid rgba(244,238,221,0.4);
+    border-radius:100px;
+    padding:9px 18px;
+    text-decoration:none;
+    transition:all 0.2s;
+  }
+  .meeting-entry .materials-link:hover{ border-color:var(--enamel); background:rgba(244,238,221,0.08); }
+
+  /* footer */
+  footer{
+    background:
+      radial-gradient(100% 160% at 90% 130%, rgba(78,21,39,0.5), transparent 55%),
+      radial-gradient(90% 150% at 5% -20%, rgba(58,15,31,0.55), transparent 55%),
+      var(--near-black);
+    color:var(--cream);
+    padding:56px 0 36px;
+    position:relative;
+    overflow:hidden;
+  }
+  footer .wrap{ position:relative; z-index:1; }
+  .pom-art-footer{
+    position:absolute;
+    bottom:-30px;
+    right:16px;
+    width:160px;
+    opacity:0.7;
+    z-index:0;
+    pointer-events:none;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  footer .brand span{ color:var(--cream); }
+  footer .brand img{ box-shadow:0 0 0 1px rgba(248,242,228,0.2); }
+  footer p{ opacity:0.6; font-size:14px; max-width:320px; margin-top:10px;}
+  .footer-links{ display:flex; gap:26px; }
+  .footer-links a{
+    color:var(--cream);
+    text-decoration:none;
+    font-size:14px;
+    opacity:0.75;
+  }
+  .footer-links a:hover{ opacity:1; }
+  .foot-bottom{
+    margin-top:44px;
+    padding-top:22px;
+    border-top:1px solid rgba(248,242,228,0.15);
+    font-size:12.5px;
+    opacity:0.5;
+    text-align:center;
+  }
+
+  @media (max-width:760px){
+    nav.links{ display:none; }
+    .page-banner h1{ font-size:32px; }
+    .pom-art-banner, .pom-art-footer{ display:none; }
+    .meeting-entry{ grid-template-columns:76px 1fr; gap:18px; padding:22px; }
+    .meeting-entry .cover, .cover-placeholder{ width:76px; height:112px; }
+    .footer-grid{ flex-direction:column; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Pomegranate Book Club logo">
+      <span>Pomegranate</span>
+    </a>
+    <nav class="links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#meeting">Next meeting</a>
+      <a href="index.html#books">Reading list</a>
+      <a href="past-meetings.html" class="current">Past meetings</a>
+    </nav>
+    <a class="ig-btn" href="https://www.instagram.com/pomegranatebookclub/" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</header>
+
+<div class="page-banner">
+  <img class="pom-art-banner" src="pom-art.png" alt="" aria-hidden="true">
+  <div class="wrap">
+    <span class="eyebrow eyebrow--light">the archive</span>
+    <h1>Past meetings</h1>
+    <p>every book we've read, every conversation we've had.</p>
+  </div>
+</div>
+
+<section class="archive">
+  <div class="wrap">
+    <div class="archive-list">
+
+      <p class="list-label">July 2026</p>
+      <div class="meeting-entry">
+        <img class="cover" src="lion-women-cover.jpg" alt="Cover of The Lion Women of Tehran by Marjan Kamali">
+        <div>
+          <h3>The Lion Women of Tehran</h3>
+          <div class="author">Marjan Kamali</div>
+          <div class="meta">Jul 15, 2026 · entire book</div>
+          <a class="materials-link" href="https://docs.google.com/presentation/d/1VYgjAohDVSxO9GXlWN36qS5em5dVwTpx3hWtZGEirOM/edit?usp=sharing" target="_blank" rel="noopener">Discussion slides ↗</a>
+        </div>
+      </div>
+
+      <p class="list-label">Coming up</p>
+      <div class="meeting-entry upcoming">
+        <div class="cover-placeholder">cover</div>
+        <div>
+          <h3>East of Eden</h3>
+          <div class="author">John Steinbeck</div>
+          <div class="meta">Aug 30, 2026 · in progress</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img class="pom-art-footer" src="pom-art.png" alt="" aria-hidden="true">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="index.html">
+          <img src="logo.png" alt="Pomegranate Book Club logo">
+          <span>Pomegranate</span>
+        </a>
+        <p>two girls fighting the illiteracy crisis</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html#about">About</a>
+        <a href="index.html#meeting">Next meeting</a>
+        <a href="index.html#books">Reading list</a>
+        <a href="past-meetings.html">Past meetings</a>
+        <a href="https://www.instagram.com/pomegranatebookclub/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="foot-bottom">Pomegranate Book Club · A Global Brand · created by Diya Gandhi &amp; Shayona Basu</div>
+  </div>
+</footer>
+
+</body>
+</html>
